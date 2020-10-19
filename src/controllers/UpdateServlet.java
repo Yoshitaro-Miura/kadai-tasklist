@@ -38,7 +38,7 @@ public class UpdateServlet extends HttpServlet {
         // TODO Auto-generated method stub
 
         String _token = request.getParameter("_token");
-        if(_token != null && _token.equals(request.getSession()));
+        if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DButil.createEntityManager();
 
             //idはeditでセッションスコープに入れたものから取得
@@ -80,12 +80,10 @@ public class UpdateServlet extends HttpServlet {
 
                 }
 
-
-
-
-
-
+    } else {
+        System.out.println("_token:" + _token);
+        System.out.println("セッション" + request.getSession().getId());
 
     }
-
+  }
 }
